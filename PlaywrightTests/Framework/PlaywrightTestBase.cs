@@ -1,5 +1,6 @@
 namespace PlaywrightTests;
 
+using System;
 using Microsoft.Playwright;
 using NUnit.Framework;
 using PlaywrightTests.utils;
@@ -34,10 +35,12 @@ public abstract class PlaywrightTestBase
     {
         Playwright = await Microsoft.Playwright.Playwright.CreateAsync();
 
+        var isCi = string.Equals(Environment.GetEnvironmentVariable("CI"), "true", StringComparison.OrdinalIgnoreCase);
+
         Browser = await Playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = false,
-            SlowMo = 200,
+            Headless = isCi,
+            SlowMo = isCi ? 0 : 200,
         });
 
         var videoDir = Path.Combine(TestContext.CurrentContext.WorkDirectory, "playwright-videos");
