@@ -1,0 +1,26 @@
+# .NET build outputs
+**/bin/
+**/obj/
+
+# Rider/VS caches
+.idea/
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Playwright artifacts
+**/playwright-videos/
+**/playwright-traces/
+**/playwright-report/
+
+# Allure artifacts
+**/allure-results/
+**/allure-report/
+
+# OS cruft
+Thumbs.db
+Desktop.ini
