@@ -33,7 +33,13 @@ powershell -ExecutionPolicy Bypass -File .\bin\Debug\net10.0\playwright.ps1 inst
 
 ## Run tests
 
-Run all tests:
+Run all tests (from repo root):
+
+```powershell
+dotnet test .\PlaywrightTests\PlaywrightTests.csproj -v minimal
+```
+
+Run all tests (from the test project folder):
 
 ```powershell
 Set-Location .\PlaywrightTests
@@ -56,6 +62,22 @@ dotnet test -v minimal --filter FullyQualifiedName=PlaywrightTests.Task1Tests.Co
 Set-Location .\PlaywrightTests
 allure serve .\allure-results
 ```
+
+## Open Allure report downloaded from GitHub Actions artifacts
+
+If you downloaded the `allure-report` artifact from GitHub Actions:
+
+1) Unzip it (it contains the `allure-report/` folder).
+2) Open `allure-report/index.html` in your browser.
+
+If your browser blocks some assets when opened from disk, serve it locally:
+
+```powershell
+Set-Location .\allure-report
+python -m http.server 8080
+```
+
+Then open `http://localhost:8080`.
 
 ## Notes
 

@@ -1,9 +1,7 @@
-name: Tests + Allure report
+name: Run E2E tests
 
 on:
-  push:
-    branches: ["**"]
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
